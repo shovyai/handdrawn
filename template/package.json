@@ -1,0 +1,26 @@
+{
+  "name": "handdrawn-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "timing": "node scripts/timing.mjs",
+    "check": "node scripts/timing.mjs && tsc --noEmit && node scripts/check.mjs",
+    "studio": "remotion studio",
+    "stills": "node scripts/stills.mjs",
+    "render": "npm run check && remotion render src/index.ts Film output/video.mp4 --codec h264 --crf 16 --image-format=png",
+    "render:subs": "npm run check && remotion render src/index.ts Film output/video-subs.mp4 --codec h264 --crf 18 --image-format=png --props='{\"subs\":true}'"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.539",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@remotion/bundler": "^4.0.539",
+    "@remotion/renderer": "^4.0.539",
+    "@types/react": "^19.3.0",
+    "esbuild": "^0.25.0",
+    "typescript": "^5.9.0"
+  }
+}
